@@ -3,7 +3,7 @@
 	color: orange;
 }
 
-button {
+button, .button {
 	width: 12vw;
 	height: 3vw;
 	background-color: black;
@@ -16,9 +16,10 @@ button {
 	justify-content: center;
 	white-space: nowrap;
 	margin: 1vw 0;
+	text-decoration: none;
 }
 
-button:hover {
+button:hover, .button:hover {
 	cursor: pointer;
 	color: black;
 	background-color: orange;

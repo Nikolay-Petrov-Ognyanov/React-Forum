@@ -3,11 +3,7 @@ import { Context } from "../Context"
 import * as service from "../service"
 
 export function Posts() {
-    const { posts } = useContext(Context)
-
-    useEffect(() => {
-        console.log(posts)
-    }, [])
+    const { posts, setPosts } = useContext(Context)
 
     return (
         <section>
