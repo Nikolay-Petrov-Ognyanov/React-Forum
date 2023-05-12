@@ -7,7 +7,10 @@ export function Nav() {
     const { users, user, setUser } = useContext(Context)
 
     function handleLogout() {
+        service.logout({accessToken: user.accessToken})
 
+        localStorage.clear()
+        setUser(null)
     }
 
     return (

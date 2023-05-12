@@ -2,13 +2,13 @@ async function requester(method, url, data) {
     const accessToken = localStorage.getItem("accessToken")
     const headers = {}
 
-    if (accessToken) {headers["X-Authorization"] = accessToken}
+    if (accessToken) { headers["X-Authorization"] = accessToken }
 
     function sendRequest(method, url, data) {
         if (method === "GET" || method === "DELETE") {
             return fetch(url)
         } else {
-            const send =  fetch(url, {
+            return fetch(url, {
                 method,
                 headers: {
                     ...headers,
@@ -16,19 +16,14 @@ async function requester(method, url, data) {
                 },
                 body: JSON.stringify(data)
             })
-
-            console.log(send.then(result => console.log(result)))
-
-            return send
         }
-
     }
 
     try {
         const response = await sendRequest(method, url, data)
-        const result = await response.json()
+        const result = response.status !== 204 && await response.json()
 
-        return result
+        return result && result
     } catch (error) { console.error(error) }
 }
 
