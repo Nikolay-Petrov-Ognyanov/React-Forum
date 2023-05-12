@@ -10,16 +10,18 @@ export function Auth() {
 
         const formData = Object.fromEntries(new FormData(event.target))
 
-        service.register(formData).then(
-            result => {
-                setUser(result)
-                setUsers([...users, result])
-                
-                for (let key in result) {
-                    localStorage.setItem(key, result[key])
+        if (!Object.values(formData).some(v => !v)) {
+
+            service.register(formData).then(result => {
+                if (!result.messagex) {
+                    setUser(result)
+
+                    for (let key in result) {
+                        localStorage.setItem(key, result[key])
+                    }
                 }
-            }
-        ).catch(error => console.error(error))
+            }).catch(error => console.error(error))
+        }
     }
 
     async function handleLogin(event) {
@@ -27,17 +29,20 @@ export function Auth() {
 
         const formData = Object.fromEntries(new FormData(event.target))
 
-        service.login(formData).then(
-            result => {
-                setUser(result)
+        if (!Object.values(formData).some(v => !v)) {
+            service.login(formData).then(result => {
+                console.log(result)
 
-                for (let key in result) {
-                    localStorage.setItem(key, result[key])
+                if (!result.message) {
+                    setUser(result)
+
+                    for (let key in result) {
+                        localStorage.setItem(key, result[key])
+                    }
                 }
-            }
-        ).catch(error => console.error(error))
+            }).catch(error => console.error(error))
+        }
     }
-
 
     return (
         <section className="auth">
