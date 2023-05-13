@@ -4,16 +4,52 @@ import { Context } from "../Context"
 import { useNavigate } from "react-router-dom"
 
 export function Auth() {
-    const {
-        users,
-        setUsers,
-        user,
-        setUser
-    } = useContext(Context)
+    const { users, setUsers, user, setUser } = useContext(Context)
 
     const [isRegistering, setIsRegistering] = useState(true)
     const [modalMessage, setModalMessage] = useState("")
     const [showModal, setShowModal] = useState(false)
+
+    const [inputs, setInputs] = useState({
+        username: "",
+        password: ""
+    })
+
+    const [errors, setErrors] = useState({
+        username: "",
+        password: ""
+    })
+
+    function handleInputChange(event) {
+        const { name, value } = event.target
+
+        setInputs(state => ({ ...state, [name]: value }))
+        validateInput(event)
+    }
+
+    function validateInput(event) {
+        const { name, value } = event.target
+
+        setErrors(state => {
+            const stateObject = { ...state, [name]: "" }
+
+            if (name === "username") {
+                if (!value) {
+                    stateObject[name] = "Username is required."
+                } else if (value.length < 2) {
+                    stateObject[name] = "Username must be at least 2 characers long."
+                }
+            } else if (name === "password") {
+                if (!value) {
+                    stateObject[name] = "Password is required."
+                } else if (value.length < 5) {
+                    stateObject[name] = "Password must be at least 5 characters long."
+                }
+            }
+
+            return stateObject
+        })
+    }
 
     const navigate = useNavigate()
 
@@ -48,20 +84,17 @@ export function Auth() {
                     }
 
                     navigate("/")
-                } else {
+                } else if (result && result.message) {
+                    let message = result.message
+
                     if (Array.isArray(result.message)) {
-                        let message = result.message[0]
+                        let usernameMessage = result.message[0]
+                        let passwordMessage = result.message[1].toLowerCase()
 
-                        if (result.message.length === 2) {
-                            let passwordMessage = result.message[1].toLowerCase()
-
-                            message = `${result.message[0]} and ${passwordMessage}`
-                        }
-
-                        result.message = message
+                        message = `${usernameMessage} and ${passwordMessage}`
                     }
 
-                    setModalMessage(result.message)
+                    setModalMessage(message)
                     setShowModal(true)
                 }
             } catch (error) {
@@ -82,18 +115,28 @@ export function Auth() {
                     type="text"
                     name="username"
                     placeholder="Username"
+                    value={inputs.username}
+                    onChange={handleInputChange}
+                    onBlur={validateInput}
                 />
 
                 <input
                     type="password"
                     name="password"
                     placeholder="Password"
+                    value={inputs.password}
+                    onChange={handleInputChange}
+                    onBlur={validateInput}
                 />
 
                 <div className="buttonsWrapper">
                     <button
                         type="submit"
                         onClick={handleRegister}
+                        disabled={Object.values(errors).some(entry => entry !== "")
+                            ? true
+                            : Object.values(inputs).some(entry => entry === "")
+                        }
                     >
                         Register
                     </button>
@@ -101,11 +144,20 @@ export function Auth() {
                     <button
                         type="submit"
                         onClick={handleLogin}
+                        disabled={Object.values(errors).some(entry => entry !== "")
+                            ? true
+                            : Object.values(inputs).some(entry => entry === "")
+                        }
                     >
                         Login
                     </button>
                 </div>
             </form>
+
+            <div className="errorsWrapper">
+                {errors.username && <p className="errors">{errors.username}</p>}
+                {errors.password && <p className="errors">{errors.password}</p>}
+            </div>
 
             {showModal &&
                 <div className="modal">
