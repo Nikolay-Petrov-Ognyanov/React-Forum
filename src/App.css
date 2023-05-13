@@ -4,7 +4,7 @@
 }
 
 button, .button {
-	width: 24vw;
+	width: 24.5vw;
 	height: 6vw;
 	background-color: black;
 	color: orange;
@@ -15,7 +15,7 @@ button, .button {
 	align-items: center;
 	justify-content: center;
 	white-space: nowrap;
-	margin: 2vw 0;
+	margin-top: 2vw;
 	text-decoration: none;
 }
 
@@ -42,7 +42,7 @@ form {
 }
 
 input {
-	width: 24vw;
+	width: 50vw;
 	height: 6vw;
 	font-size: 4vw;
 	border-radius: 3vw;
@@ -125,4 +125,30 @@ p {
 	align-items: center;
 	justify-content: center;
 	gap: 2vw;
+}
+
+.modal {
+	z-index: 1;
+	position: absolute;
+	background-color: black;
+	width: 50vw;
+	height: 22vw;
+	top: 18vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.modalMessage{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50vw;
+	/* height: 6vw; */
+	font-size: 3vw;
+}
+
+.modal button {
+	width: 50vw;
 }
