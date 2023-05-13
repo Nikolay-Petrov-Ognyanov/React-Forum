@@ -129,29 +129,18 @@ export function Auth() {
                     onBlur={validateInput}
                 />
 
-                <div className="buttonsWrapper">
-                    <button
-                        type="submit"
-                        onClick={handleRegister}
-                        disabled={Object.values(errors).some(entry => entry !== "")
-                            ? true
-                            : Object.values(inputs).some(entry => entry === "")
-                        }
-                    >
-                        Register
-                    </button>
 
-                    <button
-                        type="submit"
-                        onClick={handleLogin}
-                        disabled={Object.values(errors).some(entry => entry !== "")
-                            ? true
-                            : Object.values(inputs).some(entry => entry === "")
-                        }
-                    >
-                        Login
-                    </button>
-                </div>
+
+                {
+                    !Object.values(errors).some(entry => entry !== "") &&
+                    !Object.values(inputs).some(entry => entry === "") &&
+
+                    <div className="buttonsWrapper">
+                        <button type="submit" onClick={handleRegister}>Register</button>
+                        <button type="submit" onClick={handleLogin}>Login</button>
+                    </div>
+                }
+
             </form>
 
             <div className="errorsWrapper">
@@ -159,15 +148,15 @@ export function Auth() {
                 {errors.password && <p className="errors">{errors.password}</p>}
             </div>
 
-            {showModal &&
+            {
+                showModal &&
+
                 <div className="modal">
-                    <div className="modalMessage">
-                        {modalMessage}
-                    </div>
+                    <div className="modalMessage">{modalMessage}</div>
 
                     <button onClick={closeModal}>OK</button>
                 </div>
             }
-        </section>
+        </section >
     )
 }

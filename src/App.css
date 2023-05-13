@@ -1,15 +1,72 @@
+@keyframes color-shift {
+	85.71428571428571% {
+		color: rgb(255, 0, 255);
+		border-color: rgb(255, 0, 255);
+		background-color: rgb(255, 0, 255);
+	}
+
+	71.42857142857143% {
+		color: rgb(0, 0, 255);
+		border-color: rgb(0, 0, 255);
+		background-color: rgb(0, 0, 255);
+	}
+
+	57.14285714285714% {
+		color: rgb(0, 191, 255);
+		border-color: rgb(0, 191, 255);
+		background-color: rgb(0, 191, 255);
+	}
+
+	42.85714285714286% {
+		color: rgb(0, 255, 0);
+		border-color: rgb(0, 255, 0);
+		background-color: rgb(0, 255, 0);
+	}
+
+	28.57142857142858% {
+		color: rgb(255, 255, 0);
+		border-color: rgb(255, 255, 0);
+		background-color: rgb(255, 255, 0);
+	}
+
+	14.28571428571429% {
+		color: rgb(255, 166, 0);
+		border-color: rgb(255, 166, 0);
+		background-color: rgb(255, 166, 0);
+	}
+
+	0% {
+		color: rgb(255, 0, 0);
+		border-color: rgb(255, 0, 0);
+		background-color: rgb(255, 0, 0);
+	}
+}
+
 .App {
-	text-align: center;
-	color: orange;
+	animation: color-shift 42s infinite;
+	color: red;
+	border-color: red;
+}
+
+.colorShift {
+	animation: color-shift 42s infinite;
+	color: red;
+	border-color: red;
+}
+
+section * {
+	color: inherit;
+	border-color: inherit;
+	animation: inherit;
+	background-color: inherit;
 }
 
 button,
 .button {
-	width: 24.5vw;
+	width: 24vw;
 	height: 6vw;
 	background-color: black;
-	color: orange;
-	border: 0.5vw solid orange;
+	border: 0.5vw solid;
 	border-radius: 3vw;
 	font-size: 4vw;
 	display: flex;
@@ -18,25 +75,23 @@ button,
 	white-space: nowrap;
 	margin-top: 1vw;
 	text-decoration: none;
+	color: inherit;
+	border-color: inherit;
+	animation: inherit;
 }
 
 button:hover,
 .button:hover {
 	cursor: pointer;
-	color: black;
-	background-color: orange;
-}
-
-button:disabled,
-.button:disabled {
-	display: none;
+	background-color: inherit;
 }
 
 nav {
 	display: flex;
 	justify-content: space-between;
-	margin: 0 25vw;
-	width: 50vw;
+	padding: 0 25vw;
+	width: 100vw;
+	background-color: black;
 }
 
 form {
@@ -44,8 +99,8 @@ form {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	gap: 1vw;
-	margin: 2vw 0 0 0;
+	gap: 2vw;
+	margin: 3vw 0 0 0;
 }
 
 input {
@@ -53,21 +108,19 @@ input {
 	height: 6vw;
 	font-size: 4vw;
 	border-radius: 3vw;
-	border: 0.5vw solid orange;
+	border: 0.5vw solid;
 	background-color: black;
-	color: orange;
 	text-align: center;
 	outline: none;
 }
 
 textarea {
-	border: 0.5vw solid orange;
+	border: 0.5vw solid;
 	border-radius: 3vw;
 	resize: none;
 	background-color: black;
 	width: 50vw;
 	outline: none;
-	color: orange;
 	font-size: 4vw;
 	text-align: center;
 	height: 32vw;
@@ -84,6 +137,7 @@ section {
 	flex-direction: column;
 	align-items: center;
 	width: 100vw;
+	background-color: black;
 }
 
 .create {
@@ -91,7 +145,7 @@ section {
 }
 
 .postCard {
-	border: 0.5vw solid orange;
+	border: 0.5vw solid;
 	width: 100vw;
 	border-radius: 3vw;
 	font-size: 4vw;
@@ -104,12 +158,12 @@ section {
 
 .postCard:hover {
 	cursor: pointer;
-	background-color: orange;
+	background-color: rgb(255, 0, 0);
 	color: black;
 }
 
 .postWrapper {
-	border: 0.5vw solid orange;
+	border: 0.5vw solid;
 	width: 100vw;
 	border-radius: 3vw;
 	display: flex;
@@ -139,8 +193,8 @@ p {
 	position: absolute;
 	background-color: black;
 	width: 50vw;
-	height: 21vw;
-	top: 9vw;
+	height: 23vw;
+	top: 10vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -153,8 +207,8 @@ p {
 	align-items: center;
 	width: 50vw;
 	font-size: 3vw;
-	height: 13vw;
-	border: 0.5vw solid orange;
+	height: 14vw;
+	border: 0.5vw solid;
 	border-radius: 3vw;
 }
 
@@ -168,4 +222,9 @@ p {
 
 .errorsWrapper {
 	margin-top: -1vw;
+}
+
+.formButtons {
+	position: absolute;
+	top: 26vw;
 }
