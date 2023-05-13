@@ -9,6 +9,7 @@ export function Auth() {
     const [isRegistering, setIsRegistering] = useState(true)
     const [modalMessage, setModalMessage] = useState("")
     const [showModal, setShowModal] = useState(false)
+    const [isHovered, setIsHovered] = useState(false)
 
     const [inputs, setInputs] = useState({
         username: "",
@@ -20,38 +21,9 @@ export function Auth() {
         password: ""
     })
 
-    function handleInputChange(event) {
-        const { name, value } = event.target
-
-        setInputs(state => ({ ...state, [name]: value }))
-        validateInput(event)
-    }
-
-    function validateInput(event) {
-        const { name, value } = event.target
-
-        setErrors(state => {
-            const stateObject = { ...state, [name]: "" }
-
-            if (name === "username") {
-                if (!value) {
-                    stateObject[name] = "Username is required."
-                } else if (value.length < 2) {
-                    stateObject[name] = "Username must be at least 2 characers long."
-                }
-            } else if (name === "password") {
-                if (!value) {
-                    stateObject[name] = "Password is required."
-                } else if (value.length < 5) {
-                    stateObject[name] = "Password must be at least 5 characters long."
-                }
-            }
-
-            return stateObject
-        })
-    }
-
     const navigate = useNavigate()
+
+    const className = isHovered ? ".App" : ""
 
     function handleRegister() {
         setIsRegistering(true)
@@ -103,6 +75,37 @@ export function Auth() {
         }
     }
 
+    function handleInputChange(event) {
+        const { name, value } = event.target
+
+        setInputs(state => ({ ...state, [name]: value }))
+        validateInput(event)
+    }
+
+    function validateInput(event) {
+        const { name, value } = event.target
+
+        setErrors(state => {
+            const stateObject = { ...state, [name]: "" }
+
+            if (name === "username") {
+                if (!value) {
+                    stateObject[name] = "Username is required."
+                } else if (value.length < 2) {
+                    stateObject[name] = "Username must be at least 2 characers long."
+                }
+            } else if (name === "password") {
+                if (!value) {
+                    stateObject[name] = "Password is required."
+                } else if (value.length < 5) {
+                    stateObject[name] = "Password must be at least 5 characters long."
+                }
+            }
+
+            return stateObject
+        })
+    }
+
     function closeModal() {
         setModalMessage("")
         setShowModal(false)
@@ -129,8 +132,6 @@ export function Auth() {
                     onBlur={validateInput}
                 />
 
-
-
                 {
                     !Object.values(errors).some(entry => entry !== "") &&
                     !Object.values(inputs).some(entry => entry === "") &&
@@ -140,7 +141,6 @@ export function Auth() {
                         <button type="submit" onClick={handleLogin}>Login</button>
                     </div>
                 }
-
             </form>
 
             <div className="errorsWrapper">

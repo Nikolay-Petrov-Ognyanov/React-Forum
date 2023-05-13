@@ -43,15 +43,17 @@
 }
 
 .App {
-	animation: color-shift 42s infinite;
+	animation: color-shift 420s infinite;
 	color: red;
 	border-color: red;
 }
 
-.colorShift {
-	animation: color-shift 42s infinite;
-	color: red;
-	border-color: red;
+section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100vw;
+	background-color: black;
 }
 
 section * {
@@ -65,7 +67,7 @@ button,
 .button {
 	width: 24vw;
 	height: 6vw;
-	background-color: black;
+	background-color: inherit;
 	border: 0.5vw solid;
 	border-radius: 3vw;
 	font-size: 4vw;
@@ -83,7 +85,8 @@ button,
 button:hover,
 .button:hover {
 	cursor: pointer;
-	background-color: inherit;
+	/* background-color: currentColor; */
+	animation: inherit;
 }
 
 nav {
@@ -130,14 +133,6 @@ textarea {
 	display: flex;
 	justify-content: space-between;
 	width: 50vw;
-}
-
-section {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 100vw;
-	background-color: black;
 }
 
 .create {
@@ -218,13 +213,11 @@ p {
 
 .errors {
 	height: 6vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .errorsWrapper {
-	margin-top: -1vw;
-}
-
-.formButtons {
-	position: absolute;
-	top: 26vw;
+	margin-top: 1vw;
 }
