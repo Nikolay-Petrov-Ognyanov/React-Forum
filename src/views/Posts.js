@@ -5,6 +5,10 @@ import * as service from "../service"
 export function Posts() {
     const { posts, setPosts } = useContext(Context)
 
+    useEffect(() => {
+        service.readPosts().then(result => setPosts(result))
+    }, [])
+
     return (
         <section>
             <h1>Posts</h1>

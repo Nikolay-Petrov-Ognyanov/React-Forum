@@ -4,6 +4,7 @@ import { ContextProvider } from "./Context"
 import { Posts } from './views/Posts';
 import { Nav } from './views/Nav';
 import { Auth } from './views/Auth';
+import { Create } from './views/Create';
 
 
 function App() {
@@ -16,6 +17,8 @@ function App() {
 					<Route path="/posts" element={<Posts />} />
 
 					<Route path="/auth" element={<Auth />} />
+
+					<Route path="/create" element={<Create />} />
 
 					<Route path="/*" element={<Posts />} />
 				</Routes>

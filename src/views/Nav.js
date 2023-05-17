@@ -14,18 +14,19 @@ export function Nav() {
     }
 
     return (
-        <nav>
-            <Link to="/posts" className="button top left">Posts</Link>
+        <nav style={{
+            justifyContent: user ? "space-evenly" : "center",
+            gap: user ? 0 : "2vw"
+        }}>
+            <Link to="/posts" className="button">Posts</Link>
 
-            {!user && <Link to="/auth" className="button top right">Sign in</Link>}
+            {user && <Link to="/create" className="button">Create</Link>}
 
-            {user && <button onClick={handleLogout} className="button top right">Sign out</button>}
+            {user && <Link className="button">Profile</Link>}
 
-            <Link to="/posts" className="button bot">Posts</Link>
+            {!user && <Link to="/auth" className="button">Sign in</Link>}
 
-            {!user && <Link to="/auth" className="button bot">Sign in</Link>}
-
-            {user && <button onClick={handleLogout} className="button bot">Sign out</button>}
+            {user && <button onClick={handleLogout} className="button">Sign out</button>}
         </nav>
     )
 }

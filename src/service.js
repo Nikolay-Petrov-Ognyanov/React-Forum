@@ -11,3 +11,5 @@ export function register(data) { return request.post(`${url}/users/register`, da
 export function login(data) { return request.post(`${url}/users/login`, data) }
 
 export function logout(data) { return request.post(`${url}/users/logout`, data) }
+
+export function createPost(data) { return request.post(`${url}/posts`, data) }

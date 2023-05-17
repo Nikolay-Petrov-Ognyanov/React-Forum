@@ -1,69 +1,18 @@
-@keyframes color-shift {
-	100% {
-		color: rgb(255, 0, 0);
-		border-color: rgb(255, 0, 0);
-		background-color: rgb(255, 0, 0);
-	}
-
-	85.71428571428571% {
-		color: rgb(255, 0, 255);
-		border-color: rgb(255, 0, 255);
-		background-color: rgb(255, 0, 255);
-	}
-
-	71.42857142857143% {
-		color: rgb(0, 0, 255);
-		border-color: rgb(0, 0, 255);
-		background-color: rgb(0, 0, 255);
-	}
-
-	57.14285714285714% {
-		color: rgb(0, 191, 255);
-		border-color: rgb(0, 191, 255);
-		background-color: rgb(0, 191, 255);
-	}
-
-	42.85714285714286% {
-		color: rgb(0, 255, 0);
-		border-color: rgb(0, 255, 0);
-		background-color: rgb(0, 255, 0);
-	}
-
-	28.57142857142858% {
-		color: rgb(255, 255, 0);
-		border-color: rgb(255, 255, 0);
-		background-color: rgb(255, 255, 0);
-	}
-
-	14.28571428571429% {
-		color: rgb(255, 166, 0);
-		border-color: rgb(255, 166, 0);
-		background-color: rgb(255, 166, 0);
-	}
-
-	0% {
-		color: rgb(255, 0, 0);
-		border-color: rgb(255, 0, 0);
-		background-color: rgb(255, 0, 0);
-	}
-}
-
-.App {
-	animation: color-shift 7s infinite;
+.App * {
+	color: orange;
+	border-color: orange;
+	background-color: black;
 }
 
 nav {
+	margin-top: 1vw;
 	display: flex;
-	justify-content: space-between;
-	padding: 0 25vw;
 	width: 100vw;
-	background-color: black !important;
-	animation: inherit;
 }
 
-
+button,
 .button {
-	width: 24vw;
+	width: 22.5vw;
 	height: 6vw;
 	border: 0.5vw solid;
 	border-radius: 3vw;
@@ -72,61 +21,23 @@ nav {
 	align-items: center;
 	justify-content: center;
 	white-space: nowrap;
-	margin-top: 1vw;
 	text-decoration: none;
 	color: inherit;
-	animation: inherit;
 }
 
-.top {
-	position: absolute;
-	opacity: 100;
-	background-color: black !important;
-	color: inherit;
-}
-
-.top:hover {
-	position: absolute;
-	opacity: 0;
-	pointer-events: 0;
-	z-index: -1;
-}
-
-.bot {
-	color: black !important;
+button:hover,
+.button:hover {
 	cursor: pointer;
-	animation: inherit;
-}
-
-.bot:hover {
-	z-index: 1;
-	animation: inherit;
-}
-
-.left {
-	left: 0;
-	margin-left: 25vw;
-}
-
-.right {
-	right: 0;
-	margin-right: 25vw;
+	color: black;
+	border-color: orange;
+	background-color: orange;
 }
 
 section {
-	top: 7vw;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	width: 100vw;
-	position: absolute;
-	animation: forwards;
-}
-
-section * {
-	color: inherit;
-	border-color: inherit;
-	background-color: inherit;
 }
 
 form {
@@ -135,16 +46,15 @@ form {
 	justify-content: space-between;
 	align-items: center;
 	gap: 2vw;
-	margin: 3vw 0 0 0;
+	margin: 2vw 0 0 0;
 }
 
 input {
-	width: 50vw;
+	width: 47vw;
 	height: 6vw;
 	font-size: 4vw;
 	border-radius: 3vw;
 	border: 0.5vw solid;
-	background-color: black;
 	text-align: center;
 	outline: none;
 }
@@ -153,18 +63,22 @@ textarea {
 	border: 0.5vw solid;
 	border-radius: 3vw;
 	resize: none;
-	background-color: black;
-	width: 50vw;
+	width: 47vw;
 	outline: none;
 	font-size: 4vw;
 	text-align: center;
-	height: 32vw;
+	height: 20vw;
+}
+
+input.create,
+textarea.create {
+	width: 96vw;
 }
 
 .buttonsWrapper {
 	display: flex;
 	justify-content: space-between;
-	width: 50vw;
+	width: 47vw;
 }
 
 h1 {
@@ -186,10 +100,9 @@ p {
 .modal {
 	z-index: 1;
 	position: absolute;
-	background-color: black;
-	width: 50vw;
-	height: 23vw;
-	top: 10vw;
+	width: 47vw;
+	height: 22vw;
+	top: 9vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -198,17 +111,17 @@ p {
 
 .modalMessage {
 	display: flex;
-	justify-content: center;
 	align-items: center;
-	width: 50vw;
+	width: 47vw;
 	font-size: 3vw;
 	height: 14vw;
 	border: 0.5vw solid;
 	border-radius: 3vw;
+	text-align: center;
 }
 
 .modal button {
-	width: 50vw;
+	width: 47vw;
 }
 
 .errors {
@@ -222,11 +135,7 @@ p {
 	margin-top: 1vw;
 }
 
-/* .create {
-	width: 50vw;
-} */
-
-/* .postCard {
+.postCard {
 	border: 0.5vw solid;
 	width: 100vw;
 	border-radius: 3vw;
@@ -236,15 +145,16 @@ p {
 	justify-content: center;
 	align-items: center;
 	margin: 0.5vw 0;
-} */
+}
 
-/* .postCard:hover {
+.postCard:hover {
 	cursor: pointer;
-	background-color: rgb(255, 0, 0);
 	color: black;
-} */
+	border-color: orange;
+	background-color: orange;
+}
 
-/* .postWrapper {
+.postWrapper {
 	border: 0.5vw solid;
 	width: 100vw;
 	border-radius: 3vw;
@@ -252,4 +162,4 @@ p {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-} */
+}
