@@ -1,10 +1,14 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import * as service from "../service"
 import { useContext, useEffect } from "react";
 import { Context } from "../Context";
 
 export function Nav() {
     const { users, user, setUser } = useContext(Context)
+
+    useEffect(() => {
+        console.log(user && user)
+    }, [])
 
     function handleLogout() {
         service.logout({ accessToken: user.accessToken })
@@ -18,13 +22,13 @@ export function Nav() {
             justifyContent: user ? "space-evenly" : "center",
             gap: user ? 0 : "2vw"
         }}>
-            <Link to="/posts" className="button">Posts</Link>
+            <NavLink to="/posts" className="button" activeclassname="active">Posts</NavLink>
 
-            {user && <Link to="/create" className="button">Create</Link>}
+            {user && <NavLink to="/create" className="button" activeclassname="active">Create</NavLink>}
 
-            {user && <Link className="button">Profile</Link>}
+            {user && <NavLink to={`/profile/${user._id}`} className="button" activeclassname="active">Profile</NavLink>}
 
-            {!user && <Link to="/auth" className="button">Sign in</Link>}
+            {!user && <NavLink to="/auth" className="button" activeclassname="active">Sign in</NavLink>}
 
             {user && <button onClick={handleLogout} className="button">Sign out</button>}
         </nav>
