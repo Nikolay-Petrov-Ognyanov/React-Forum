@@ -5,6 +5,7 @@ export const Context = createContext()
 
 export function ContextProvider({ children }) {
     const [posts, setPosts] = useState([])
+    const [post, setPost] = useState(null)
     const [users, setUsers] = useState([])
     const [user, setUser] = useState(null)
 
@@ -31,6 +32,8 @@ export function ContextProvider({ children }) {
             value={{
                 posts,
                 setPosts,
+                post,
+                setPost,
                 users,
                 setUsers,
                 user,

@@ -37,12 +37,14 @@ export function Create() {
                     stateObject[name] = "Title is required."
                 } else if (value && /^[a-zA-Z0-9\s]*$/.test(value) === false) {
                     stateObject[name] = "Please enter a valid title."
-                } else if (value && value.length > 30) {
-                    stateObject[name] = "Title could be at most 30 characters long."
+                } else if (value && value.length > 38) {
+                    stateObject[name] = "Title could be at most 38 characters long."
                 }
             } else if (name === "content") {
                 if (!value) {
                     stateObject[name] = "Content is required."
+                } else if (value && value.length > 152) {
+                    stateObject[name] = "Content could be at most 152 characters long."
                 }
             }
 
@@ -98,7 +100,7 @@ export function Create() {
                     value={inputs.content}
                     onChange={handleInputChange}
                     onBlur={validateInput}
-                ></textarea>
+                />
 
                 <div className="buttonsWrapper">
                     <button type="submit"

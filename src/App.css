@@ -16,7 +16,7 @@ button,
 	height: 6vw;
 	border: 0.5vw solid;
 	border-radius: 3vw;
-	font-size: 4vw;
+	font-size: 3.2vw;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -50,14 +50,12 @@ section {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 100vw;
 	margin-top: 2vw;
 }
 
 form {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 	align-items: center;
 	gap: 2vw;
 }
@@ -65,7 +63,7 @@ form {
 input {
 	width: 47vw;
 	height: 6vw;
-	font-size: 4vw;
+	font-size: 3.2vw;
 	border-radius: 3vw;
 	border: 0.5vw solid;
 	text-align: center;
@@ -76,15 +74,16 @@ textarea {
 	border: 0.5vw solid;
 	border-radius: 3vw;
 	resize: none;
-	width: 47vw;
+	width: 96vw;
 	outline: none;
-	font-size: 4vw;
+	font-size: 3.2vw;
 	text-align: center;
-	height: 14vw;
+	height: 11vw;
+	margin-top: -0.01vw;
+	overflow: hidden;
 }
 
-input.create,
-textarea.create {
+input.create {
 	width: 96vw;
 }
 
@@ -94,12 +93,8 @@ textarea.create {
 	width: 47vw;
 }
 
-h1 {
-	font-size: 6vw;
-}
-
 p {
-	font-size: 4vw;
+	font-size: 3.2vw;
 }
 
 .auth {
@@ -152,11 +147,12 @@ p {
 	border: 0.5vw solid;
 	width: 96vw;
 	border-radius: 3vw;
-	font-size: 4vw;
+	font-size: 3.2vw;
 	height: 6vw;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-bottom: 1vw;
 }
 
 .postCard:hover {
@@ -166,18 +162,31 @@ p {
 	background-color: orange;
 }
 
-.postWrapper {
+.postTitle {
 	border: 0.5vw solid;
-	width: 100vw;
-	border-radius: 3vw;
+	height: 6vw;
+	width: 96vw;
 	display: flex;
-	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	font-size: 3.2vw;
+	border-radius: 3vw;
+	margin-bottom: 2vw;
+}
+
+.postContent {
+	border: 0.5vw solid;
+	min-height: 6vw;
+	width: 96vw;
+	font-size: 3.2vw;
+	border-radius: 3vw;
+	text-align: center;
+	word-wrap: break-word;
+	margin-bottom: 2vw;
 }
 
 .postsWrapper {
 	display: flex;
 	flex-direction: column;
-	gap: 2vw;
+	/* gap: 2vw; */
 }
