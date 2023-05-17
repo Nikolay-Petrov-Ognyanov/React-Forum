@@ -1,4 +1,10 @@
 @keyframes color-shift {
+	100% {
+		color: rgb(255, 0, 0);
+		border-color: rgb(255, 0, 0);
+		background-color: rgb(255, 0, 0);
+	}
+
 	85.71428571428571% {
 		color: rgb(255, 0, 255);
 		border-color: rgb(255, 0, 255);
@@ -43,31 +49,22 @@
 }
 
 .App {
-	animation: color-shift 420s infinite;
-	color: red;
-	border-color: red;
+	animation: color-shift 7s infinite;
 }
 
-section {
+nav {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
+	justify-content: space-between;
+	padding: 0 25vw;
 	width: 100vw;
-	background-color: black;
-}
-
-section * {
-	color: inherit;
-	border-color: inherit;
+	background-color: black !important;
 	animation: inherit;
-	background-color: inherit;
 }
 
-button,
+
 .button {
 	width: 24vw;
 	height: 6vw;
-	background-color: inherit;
 	border: 0.5vw solid;
 	border-radius: 3vw;
 	font-size: 4vw;
@@ -78,23 +75,58 @@ button,
 	margin-top: 1vw;
 	text-decoration: none;
 	color: inherit;
-	border-color: inherit;
 	animation: inherit;
 }
 
-button:hover,
-.button:hover {
+.top {
+	position: absolute;
+	opacity: 100;
+	background-color: black !important;
+	color: inherit;
+}
+
+.top:hover {
+	position: absolute;
+	opacity: 0;
+	pointer-events: 0;
+	z-index: -1;
+}
+
+.bot {
+	color: black !important;
 	cursor: pointer;
-	/* background-color: currentColor; */
 	animation: inherit;
 }
 
-nav {
+.bot:hover {
+	z-index: 1;
+	animation: inherit;
+}
+
+.left {
+	left: 0;
+	margin-left: 25vw;
+}
+
+.right {
+	right: 0;
+	margin-right: 25vw;
+}
+
+section {
+	top: 7vw;
 	display: flex;
-	justify-content: space-between;
-	padding: 0 25vw;
+	flex-direction: column;
+	align-items: center;
 	width: 100vw;
-	background-color: black;
+	position: absolute;
+	animation: forwards;
+}
+
+section * {
+	color: inherit;
+	border-color: inherit;
+	background-color: inherit;
 }
 
 form {
@@ -133,38 +165,6 @@ textarea {
 	display: flex;
 	justify-content: space-between;
 	width: 50vw;
-}
-
-.create {
-	width: 50vw;
-}
-
-.postCard {
-	border: 0.5vw solid;
-	width: 100vw;
-	border-radius: 3vw;
-	font-size: 4vw;
-	height: 6vw;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 0.5vw 0;
-}
-
-.postCard:hover {
-	cursor: pointer;
-	background-color: rgb(255, 0, 0);
-	color: black;
-}
-
-.postWrapper {
-	border: 0.5vw solid;
-	width: 100vw;
-	border-radius: 3vw;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 }
 
 h1 {
@@ -221,3 +221,35 @@ p {
 .errorsWrapper {
 	margin-top: 1vw;
 }
+
+/* .create {
+	width: 50vw;
+} */
+
+/* .postCard {
+	border: 0.5vw solid;
+	width: 100vw;
+	border-radius: 3vw;
+	font-size: 4vw;
+	height: 6vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0.5vw 0;
+} */
+
+/* .postCard:hover {
+	cursor: pointer;
+	background-color: rgb(255, 0, 0);
+	color: black;
+} */
+
+/* .postWrapper {
+	border: 0.5vw solid;
+	width: 100vw;
+	border-radius: 3vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+} */

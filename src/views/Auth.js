@@ -137,8 +137,29 @@ export function Auth() {
                     !Object.values(inputs).some(entry => entry === "") &&
 
                     <div className="buttonsWrapper">
-                        <button type="submit" onClick={handleRegister}>Register</button>
-                        <button type="submit" onClick={handleLogin}>Login</button>
+                        <button
+                            type="submit"
+                            onClick={handleRegister}
+                            className="button top left"
+                        >Register</button>
+
+                        <button
+                            type="submit"
+                            onClick={handleLogin}
+                            className="button top right"
+                        >Login</button>
+
+                        <button
+                            type="submit"
+                            onClick={handleRegister}
+                            className="button bot"
+                        >Register</button>
+
+                        <button
+                            type="submit"
+                            onClick={handleLogin}
+                            className="button bot"
+                        >Login</button>
                     </div>
                 }
             </form>
