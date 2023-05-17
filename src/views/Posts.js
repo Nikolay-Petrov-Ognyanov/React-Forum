@@ -14,7 +14,9 @@ export function Posts() {
 
     return (
         <section>
-            {posts.length > 0 && posts.map(p => <Card key={p._id} post={p} />)}
+            <div className="postsWrapper">
+                {posts.length > 0 && posts.map(p => <Card key={p._id} post={p} />)}
+            </div>
         </section>
     )
 }

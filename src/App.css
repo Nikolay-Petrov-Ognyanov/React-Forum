@@ -33,6 +33,13 @@ button:hover,
 	background-color: orange;
 }
 
+button:disabled,
+.button:disabled {
+	pointer-events: none;
+	color: rgb(129, 84, 0);
+	border-color: rgb(129, 84, 0);
+}
+
 .active {
 	color: black;
 	border-color: orange;
@@ -73,7 +80,7 @@ textarea {
 	outline: none;
 	font-size: 4vw;
 	text-align: center;
-	height: 20vw;
+	height: 14vw;
 }
 
 input.create,
@@ -150,7 +157,6 @@ p {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 1vw;
 }
 
 .postCard:hover {
@@ -168,4 +174,10 @@ p {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+
+.postsWrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 2vw;
 }

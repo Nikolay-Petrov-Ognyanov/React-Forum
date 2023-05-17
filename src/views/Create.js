@@ -1,8 +1,54 @@
 import { useNavigate } from "react-router-dom"
 import * as service from "../service"
+import { useState } from "react"
 
 export function Create() {
     const navigate = useNavigate()
+
+    const [inputs, setInputs] = useState({
+        title: "",
+        content: ""
+    })
+
+    const [errors, setErrors] = useState({
+        title: "",
+        content: ""
+    })
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target
+
+        setInputs(state => ({
+            ...state,
+            [name]: value
+        }))
+
+        validateInput(event)
+    }
+
+    const validateInput = (event) => {
+        let { name, value } = event.target
+
+        setErrors(state => {
+            const stateObject = { ...state, [name]: "" }
+
+            if (name === "title") {
+                if (!value) {
+                    stateObject[name] = "Title is required."
+                } else if (value && /^[a-zA-Z0-9\s]*$/.test(value) === false) {
+                    stateObject[name] = "Please enter a valid title."
+                } else if (value && value.length > 30) {
+                    stateObject[name] = "Title could be at most 30 characters long."
+                }
+            } else if (name === "content") {
+                if (!value) {
+                    stateObject[name] = "Content is required."
+                }
+            }
+
+            return stateObject
+        })
+    }
 
     async function handleSave(event) {
         event.preventDefault()
@@ -35,16 +81,44 @@ export function Create() {
     return (
         <section>
             <form onSubmit={handleSave} >
-                <input className="create" type="text" name="title" placeholder="Title" />
+                <input
+                    className="create"
+                    type="text"
+                    name="title"
+                    placeholder="Title"
+                    value={inputs.title}
+                    onChange={handleInputChange}
+                    onBlur={validateInput}
+                />
 
-                <textarea className="create" name="content" placeholder="Content"></textarea>
+                <textarea
+                    className="create"
+                    name="content"
+                    placeholder="Content"
+                    value={inputs.content}
+                    onChange={handleInputChange}
+                    onBlur={validateInput}
+                ></textarea>
 
                 <div className="buttonsWrapper">
-                    <button type="submit">Save</button>
+                    <button type="submit"
+                        disabled={Object.values(errors).some(entry => entry !== "")
+                            ? true
+                            : Object.values(inputs).some(entry => entry === "")
+                        }
+                    >Save</button>
 
-                    <button onClick={handleCancel} >Cancel</button>
+                    <button
+                        onClick={handleCancel}
+                    >Cancel</button>
                 </div>
             </form>
+
+            <div className="errorsWrapper">
+                <p className="errors">
+                    {errors.title ? errors.title : errors.content}
+                </p>
+            </div>
         </section>
     )
 }

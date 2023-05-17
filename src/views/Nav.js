@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import * as service from "../service"
 import { useContext, useEffect } from "react";
 import { Context } from "../Context";
@@ -6,15 +6,17 @@ import { Context } from "../Context";
 export function Nav() {
     const { users, user, setUser } = useContext(Context)
 
+    const navigate = useNavigate()
+
     useEffect(() => {
         console.log(user && user)
     }, [])
 
     function handleLogout() {
         service.logout({ accessToken: user.accessToken })
-
         localStorage.clear()
         setUser(null)
+        navigate("/posts")
     }
 
     return (
