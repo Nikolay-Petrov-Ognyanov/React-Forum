@@ -1,11 +1,11 @@
-async function requester(method, url, data) {
+async function requester(url, method, data) {
     const accessToken = localStorage.getItem("accessToken")
     const headers = {}
 
     if (accessToken) { headers["X-Authorization"] = accessToken }
 
-    function sendRequest(method, url, data) {
-        if (method === "GET" || method === "DELETE") {
+    function sendRequest(url, method, data) {
+        if (method === "GET") {
             return fetch(url)
         } else {
             return fetch(url, {
@@ -20,17 +20,21 @@ async function requester(method, url, data) {
     }
 
     try {
-        const response = await sendRequest(method, url, data)
+        const response = await sendRequest(url, method, data)
         const result = response.status !== 204 && await response.json()
 
         return result && result
     } catch (error) { console.error(error) }
 }
 
-export function get(url) { return requester("GET", url) }
+export function get(url) { return requester(url, "GET") }
 
-export function post(url, data) { return requester("POST", url, data) }
+export function post(url, data) { return requester(url, "POST", data) }
 
-export function put(url, data) { return requester("PUT", url, data) }
+export function put(url, data) { return requester(url, "PUT", data) }
 
-export function del(url) { return requester("DELETE", url) }
+export function del(url) {
+
+
+    return requester(url, "DELETE")
+}

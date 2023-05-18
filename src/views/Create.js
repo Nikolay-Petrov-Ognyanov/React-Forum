@@ -43,8 +43,8 @@ export function Create() {
             } else if (name === "content") {
                 if (!value) {
                     stateObject[name] = "Content is required."
-                } else if (value && value.length > 152) {
-                    stateObject[name] = "Content could be at most 152 characters long."
+                } else if (value && value.length > 250) {
+                    stateObject[name] = "Content could be at most 250 characters long."
                 }
             }
 

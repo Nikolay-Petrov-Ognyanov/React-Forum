@@ -8,10 +8,6 @@ export function Nav() {
 
     const navigate = useNavigate()
 
-    useEffect(() => {
-        console.log(user && user)
-    }, [])
-
     function handleLogout() {
         service.logout({ accessToken: user.accessToken })
         localStorage.clear()

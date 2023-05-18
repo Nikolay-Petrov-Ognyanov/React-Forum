@@ -11,11 +11,11 @@ export function ContextProvider({ children }) {
 
     useEffect(() => {
         service.readPosts().then(result => {
-            setPosts(result)
+            result && setPosts(result)
         }).catch(error => console.error(error))
 
         service.readUsers().then(result => {
-            setUsers(Object.values(result).flat())
+            result && setUsers(Object.values(result).flat())
         }).catch(error => console.error(error))
 
         if (localStorage.getItem("username")) {
