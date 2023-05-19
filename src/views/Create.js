@@ -1,9 +1,12 @@
 import { useNavigate } from "react-router-dom"
 import * as service from "../service"
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { Context } from "../Context"
 
 export function Create() {
     const navigate = useNavigate()
+
+    const { setPosts } = useContext(Context)
 
     const [inputs, setInputs] = useState({
         title: "",
@@ -68,6 +71,7 @@ export function Create() {
                 })
 
                 if (postData) {
+                    setPosts(state => [...state, postData])
                     navigate("/posts")
                 }
             } catch (error) {

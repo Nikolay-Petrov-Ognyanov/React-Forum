@@ -7,6 +7,7 @@ import { Auth } from './views/Auth';
 import { Create } from './views/Create';
 import { Details } from './views/Details';
 import { Profile } from './views/Profile';
+import { Update } from './views/Update';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 				<Routes>
 					<Route path="/posts" element={<Posts />} />
 					<Route path="posts/:postId" element={<Details />} />
+					<Route path="posts/:postId/update" element={<Update />} />
 					<Route path="/auth" element={<Auth />} />
 					<Route path="/create" element={<Create />} />
 					<Route path="profile/:userId" element={<Profile />} />

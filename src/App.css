@@ -192,3 +192,23 @@ p {
 	display: flex;
 	flex-direction: column;
 }
+
+.confirmationModalWrapper {
+	position: absolute;
+	width: 96vw;
+	height: calc(100vh - 9vw);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+	overflow: hidden;
+}
+
+.confirmationModal {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-direction: column;
+	height: 100%;
+	width: 100%;
+}
