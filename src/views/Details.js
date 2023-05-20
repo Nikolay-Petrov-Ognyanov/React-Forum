@@ -4,7 +4,7 @@ import { Context } from "../Context"
 import * as service from "../service"
 
 export function Details() {
-    const postId = Object.values(useParams())[0]
+    const postId = useParams().postId
     const navigate = useNavigate()
 
     const { posts, setPosts, post, setPost, user } = useContext(Context)
@@ -19,9 +19,7 @@ export function Details() {
         navigate(-1)
     }
 
-    useEffect(() => {
-        postId && posts && setPost(postId && posts.find(p => p._id === postId))
-    }, [])
+    useEffect(() => {posts.length > 0 && postId && setPost(posts.find(p => p._id === postId))}, [])
 
     return (
         <section>
