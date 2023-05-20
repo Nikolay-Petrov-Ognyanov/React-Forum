@@ -27,6 +27,10 @@ export function ContextProvider({ children }) {
         }
     }, [])
 
+    function savePost(postData) {
+        setPost(postData)
+    }
+
     return (
         <Context.Provider
             value={{
@@ -34,6 +38,7 @@ export function ContextProvider({ children }) {
                 setPosts,
                 post,
                 setPost,
+                savePost,
                 users,
                 setUsers,
                 user,

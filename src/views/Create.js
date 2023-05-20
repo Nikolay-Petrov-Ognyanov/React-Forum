@@ -4,9 +4,9 @@ import { useContext, useState } from "react"
 import { Context } from "../Context"
 
 export function Create() {
-    const navigate = useNavigate()
-
     const { setPosts } = useContext(Context)
+
+    const navigate = useNavigate()
 
     const [inputs, setInputs] = useState({
         title: "",

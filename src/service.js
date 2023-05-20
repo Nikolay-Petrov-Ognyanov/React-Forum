@@ -14,4 +14,8 @@ export function logout(data) { return request.post(`${url}/users/logout`, data) 
 
 export function createPost(data) { return request.post(`${url}/posts`, data) }
 
+export function readPost(postId) { return request.get(`${url}/posts/${postId}`) }
+
+export function updatePost(postId, data) { return request.put(`${url}/posts/${postId}`, data) }
+
 export function deletePost(postId) { return request.del(`${url}/posts/${postId}`) }

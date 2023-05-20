@@ -4,11 +4,13 @@ import { Context } from "../Context"
 import { useNavigate } from "react-router-dom"
 
 export function Auth() {
-    const { users, setUsers, user, setUser } = useContext(Context)
-
+    const { setUser } = useContext(Context)
+    
     const [isRegistering, setIsRegistering] = useState(true)
     const [modalMessage, setModalMessage] = useState("")
     const [showModal, setShowModal] = useState(false)
+    
+    const navigate = useNavigate()
 
     const [inputs, setInputs] = useState({
         username: "",
@@ -20,7 +22,6 @@ export function Auth() {
         password: ""
     })
 
-    const navigate = useNavigate()
 
     function handleInputChange(event) {
         const { name, value } = event.target

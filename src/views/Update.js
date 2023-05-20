@@ -7,7 +7,7 @@ export function Update() {
     const postId = useParams().postId
     const navigate = useNavigate()
 
-    const { posts, setPosts } = useContext(Context)
+    const { user, posts, setPosts, post } = useContext(Context)
 
     const [inputs, setInputs] = useState({
         title: "",
@@ -20,9 +20,7 @@ export function Update() {
     })
 
     useEffect(() => {
-        const post = posts.find(p => p._id === postId) || null
-
-        if (post && postId && posts.length > 0) {
+        if (postId && posts.length > 0) {
             setInputs(post)
         } else {
             navigate(-1)
@@ -73,18 +71,20 @@ export function Update() {
 
         if (title.trim() && content.trim()) {
             const authorId = localStorage.getItem("_id")
+            const postData = { authorId, title, content }
 
             try {
-                const postData = await service.createPost({
+                const response = await service.updatePost(postId, {
                     authorId,
                     title,
                     content
                 })
 
-                if (postData) {
-                    setPosts(state => [...state, postData])
-                    navigate("/posts")
+                if (response) {
+                    setPosts(state => state.map(p => p._id === postId ? postData : p))
+                    navigate(-1)
                 }
+
             } catch (error) {
                 console.error(error)
             }

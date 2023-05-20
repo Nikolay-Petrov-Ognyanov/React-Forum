@@ -33,8 +33,4 @@ export function post(url, data) { return requester(url, "POST", data) }
 
 export function put(url, data) { return requester(url, "PUT", data) }
 
-export function del(url) {
-
-
-    return requester(url, "DELETE")
-}
+export function del(url) { return requester(url, "DELETE") }
