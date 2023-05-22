@@ -4,10 +4,13 @@ import { Context } from "../Context"
 import * as service from "../service"
 
 export function Details() {
-    const { posts, post, setPost, setPosts, user } = useContext(Context)
+    const { posts, post, setPost, setPosts, user, users } = useContext(Context)
 
     const postId = useParams().postId
 
+    const postAuthor = users.length > 0 && post && users.find(
+        u => u._id === post.authorId
+    )
     const [showConfimrationModal, setShowConfirmationModal] = useState(false)
 
     const navigate = useNavigate()
@@ -21,33 +24,43 @@ export function Details() {
     }
 
     useEffect(() => {
-        service.readPost(postId).then(result => setPost(result)).catch(error => console.error(error))
-    }, [])
+        service.readPost(postId).then(result =>
+            result && setPost(result)
+        ).catch(error => console.error(error))
+    }, [posts])
+
+
 
     return (
-        <section>
+        <section >
             <div className="postWrapper">
+                <p className="postTitle"> {post && post.title} </p>
 
-                <div className="postTitle"> {post && post.title} </div>
-                <div className="postContent"> {post && post.content} </div>
+                <p className="authorName">
+                    by <Link to={`/profile/${postAuthor._id}`}>
+                        {postAuthor.username}
+                    </Link>
+                </p>
+
+                <p className="postContent"> {post && post.content} </p>
+
+                {user && post && <div className="buttonsWrapper">
+                    {post.authorId === user._id &&
+                        <Link to={`/posts/${postId}/update`} className="button"
+                        >Update</Link>
+                    }
+
+                    <Link to={`/posts/${postId}/reply`} className="button">Reply</Link>
+
+                    {post.authorId === user._id &&
+                        <button onClick={() => setShowConfirmationModal(true)}
+                        >Delete</button>
+                    }
+                </div>}
             </div>
 
-            {
-                user && post && user._id === post.authorId &&
-                <div className="buttonsWrapper">
-                    <Link to={`/posts/${postId}/update`} className="button">Update</Link>
-                    <button onClick={() => setShowConfirmationModal(true)}>Delete</button>
-                </div>
-            }
-
-
-            {
-                user && post && user._id !== post.authorId &&
-                <button>Comment</button>
-            }
-
-            {
-                showConfimrationModal && <div onClick={() => setShowConfirmationModal(false)} className="confirmationModalWrapper">
+            {showConfimrationModal &&
+                <div onClick={() => setShowConfirmationModal(false)} className="confirmationModalWrapper">
                     <div className="confirmationModal">
                         <p>Are you sure you want to delete {post?.title}?</p>
 

@@ -8,6 +8,7 @@ import { Create } from './views/Create';
 import { Details } from './views/Details';
 import { Profile } from './views/Profile';
 import { Update } from './views/Update';
+import { Comment, Reply } from './views/Reply';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
 					<Route path="/posts" element={<Posts />} />
 					<Route path="posts/:postId" element={<Details />} />
 					<Route path="posts/:postId/update" element={<Update />} />
+					<Route path="posts/:postId/reply" element={<Reply />} />
 					<Route path="/auth" element={<Auth />} />
 					<Route path="/create" element={<Create />} />
 					<Route path="profile/:userId" element={<Profile />} />

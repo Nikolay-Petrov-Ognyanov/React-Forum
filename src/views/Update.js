@@ -7,7 +7,7 @@ export function Update() {
     const postId = useParams().postId
     const navigate = useNavigate()
 
-    const { user, posts, setPosts, post } = useContext(Context)
+    const { posts, setPosts, post, setPost } = useContext(Context)
 
     const [inputs, setInputs] = useState({
         title: "",
@@ -25,6 +25,8 @@ export function Update() {
         } else {
             navigate(-1)
         }
+
+        
     }, [])
 
     const handleInputChange = (event) => {
