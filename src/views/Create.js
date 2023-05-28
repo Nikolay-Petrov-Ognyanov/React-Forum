@@ -84,47 +84,45 @@ export function Create() {
         navigate(-1)
     }
 
-    return (
-        <section>
-            <form onSubmit={handleSave} >
-                <input
-                    className="create"
-                    type="text"
-                    name="title"
-                    placeholder="Title"
-                    value={inputs.title}
-                    onChange={handleInputChange}
-                    onBlur={validateInput}
-                />
+    return (<section>
+        <form onSubmit={handleSave} >
+            <input
+                className="create"
+                type="text"
+                name="title"
+                placeholder="Title"
+                value={inputs.title}
+                onChange={handleInputChange}
+                onBlur={validateInput}
+            />
 
-                <textarea
-                    className="create"
-                    name="content"
-                    placeholder="Content"
-                    value={inputs.content}
-                    onChange={handleInputChange}
-                    onBlur={validateInput}
-                />
+            <textarea
+                className="create"
+                name="content"
+                placeholder="Content"
+                value={inputs.content}
+                onChange={handleInputChange}
+                onBlur={validateInput}
+            />
 
-                <div className="buttonsWrapper">
-                    <button type="submit"
-                        disabled={Object.values(errors).some(entry => entry !== "")
-                            ? true
-                            : Object.values(inputs).some(entry => entry === "")
-                        }
-                    >Save</button>
+            <div className="buttonsWrapper">
+                <button type="submit"
+                    disabled={Object.values(errors).some(entry => entry !== "")
+                        ? true
+                        : Object.values(inputs).some(entry => entry === "")
+                    }
+                >Save</button>
 
-                    <button
-                        onClick={handleCancel}
-                    >Cancel</button>
-                </div>
-            </form>
-
-            <div className="errorsWrapper">
-                <p className="errors">
-                    {errors.title ? errors.title : errors.content}
-                </p>
+                <button
+                    onClick={handleCancel}
+                >Cancel</button>
             </div>
-        </section>
-    )
+        </form>
+
+        <div className="errorsWrapper">
+            <p className="errors">
+                {errors.title ? errors.title : errors.content}
+            </p>
+        </div>
+    </section>)
 }

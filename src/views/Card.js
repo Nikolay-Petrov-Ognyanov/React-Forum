@@ -7,9 +7,7 @@ export function Card({ post }) {
         navigate(`/posts/${post._id}`)
     }
 
-    return (
-        <div onClick={viewPost} className="postCard">
-            {post.title}
-        </div>
-    )
+    return (<div onClick={viewPost} className="postCard">
+        {post.title}
+    </div>)
 }

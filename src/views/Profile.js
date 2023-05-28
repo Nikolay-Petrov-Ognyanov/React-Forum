@@ -1,9 +1,6 @@
 export function Profile() {
-    
 
-    return (
-        <section>
-            Profile
-        </section>
-    )
+    return (<section>
+        Profile
+    </section>)
 }

@@ -109,8 +109,7 @@ export function Auth() {
         setShowModal(false)
     }
 
-    return (
-        <section className="auth">
+    return (<section className="auth">
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -164,6 +163,5 @@ export function Auth() {
                     <button onClick={closeModal}>OK</button>
                 </div>
             }
-        </section >
-    )
+        </section >)
 }

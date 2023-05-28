@@ -15,20 +15,18 @@ export function Nav() {
         navigate("/posts")
     }
 
-    return (
-        <nav style={{
-            justifyContent: user ? "space-evenly" : "center",
-            gap: user ? 0 : "2vw"
-        }}>
-            <NavLink to="/posts" className="button" activeclassname="active">Posts</NavLink>
+    return (<nav style={{
+        justifyContent: user ? "space-evenly" : "center",
+        gap: user ? 0 : "2vw"
+    }}>
+        <NavLink to="/posts" className="button" activeclassname="active">Posts</NavLink>
 
-            {user && <NavLink to="/create" className="button" activeclassname="active">Create</NavLink>}
+        {user && <NavLink to="/create" className="button" activeclassname="active">Create</NavLink>}
 
-            {user && <NavLink to={`/profile/${user._id}`} className="button" activeclassname="active">Profile</NavLink>}
+        {user && <NavLink to={`/profile/${user._id}`} className="button" activeclassname="active">Profile</NavLink>}
 
-            {!user && <NavLink to="/auth" className="button" activeclassname="active">Sign in</NavLink>}
+        {!user && <NavLink to="/auth" className="button" activeclassname="active">Sign in</NavLink>}
 
-            {user && <button onClick={handleLogout} className="button">Sign out</button>}
-        </nav>
-    )
+        {user && <button onClick={handleLogout} className="button">Sign out</button>}
+    </nav>)
 }

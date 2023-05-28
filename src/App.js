@@ -11,25 +11,21 @@ import { Update } from './views/Update';
 import { Comment, Reply } from './views/Reply';
 
 
-function App() {
-	return (
-		<div className='App'>
-			<ContextProvider>
-				<Nav />
+export default function App() {
+	return (<div className='App'>
+		<ContextProvider>
+			<Nav />
 
-				<Routes>
-					<Route path="/posts" element={<Posts />} />
-					<Route path="posts/:postId" element={<Details />} />
-					<Route path="posts/:postId/update" element={<Update />} />
-					<Route path="posts/:postId/reply" element={<Reply />} />
-					<Route path="/auth" element={<Auth />} />
-					<Route path="/create" element={<Create />} />
-					<Route path="profile/:userId" element={<Profile />} />
-					<Route path="/*" element={<Posts />} />
-				</Routes>
-			</ContextProvider>
-		</div>
-	)
+			<Routes>
+				<Route path="/posts" element={<Posts />} />
+				<Route path="posts/:postId" element={<Details />} />
+				<Route path="posts/:postId/update" element={<Update />} />
+				<Route path="posts/:postId/reply" element={<Reply />} />
+				<Route path="/auth" element={<Auth />} />
+				<Route path="/create" element={<Create />} />
+				<Route path="profile/:userId" element={<Profile />} />
+				<Route path="/*" element={<Posts />} />
+			</Routes>
+		</ContextProvider>
+	</div>)
 }
-
-export default App;

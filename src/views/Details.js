@@ -19,7 +19,6 @@ export function Details() {
         await service.deletePost(postId)
 
         setPosts(state => state.filter(p => p._id !== postId))
-
         navigate(-1)
     }
 
@@ -31,46 +30,43 @@ export function Details() {
 
 
 
-    return (
-        <section >
-            <div className="postWrapper">
-                <p className="postTitle"> {post && post.title} </p>
+    return (<section >
+        <div className="postWrapper">
+            <p className="postTitle"> {post && post.title} </p>
 
-                <p className="authorName">
-                    by <Link to={`/profile/${postAuthor._id}`}>
-                        {postAuthor.username}
-                    </Link>
-                </p>
+            {postAuthor && <p className="authorName">
+                by <Link to={`/profile/${postAuthor._id}`}>
+                    {postAuthor.username}
+                </Link>
+            </p>}
 
-                <p className="postContent"> {post && post.content} </p>
+            <p className="postContent"> {post && post.content} </p>
 
-                {user && post && <div className="buttonsWrapper">
-                    {post.authorId === user._id &&
-                        <Link to={`/posts/${postId}/update`} className="button"
-                        >Update</Link>
-                    }
+            {user && post && <div className="buttonsWrapper">
+                {post.authorId === user._id &&
+                    <Link to={`/posts/${postId}/update`} className="button"
+                    >Update</Link>
+                }
 
-                    <Link to={`/posts/${postId}/reply`} className="button">Reply</Link>
+                <Link to={`/posts/${postId}/reply`} className="button">Reply</Link>
 
-                    {post.authorId === user._id &&
-                        <button onClick={() => setShowConfirmationModal(true)}
-                        >Delete</button>
-                    }
-                </div>}
-            </div>
+                {post.authorId === user._id &&
+                    <button onClick={() => setShowConfirmationModal(true)}
+                    >Delete</button>
+                }
+            </div>}
+        </div>
 
-            {showConfimrationModal &&
-                <div onClick={() => setShowConfirmationModal(false)} className="confirmationModalWrapper">
-                    <div className="confirmationModal">
-                        <p>Are you sure you want to delete {post?.title}?</p>
+        {showConfimrationModal && <div onClick={() => setShowConfirmationModal(false)} className="confirmationModalWrapper">
+            <div className="confirmationModal">
+                <p>Are you sure you want to delete {post?.title}?</p>
 
-                        <div className="buttonsWrapper">
-                            <button onClick={handleConfirmationModalYes}>Yes</button>
-                            <button onClick={() => setShowConfirmationModal(false)}>No</button>
-                        </div>
-                    </div>
+                <div className="buttonsWrapper">
+                    <button onClick={handleConfirmationModalYes}>Yes</button>
+                    <button onClick={() => setShowConfirmationModal(false)}
+                    >No</button>
                 </div>
-            }
-        </section >
-    )
+            </div>
+        </div>}
+    </section >)
 }
