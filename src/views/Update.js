@@ -25,8 +25,6 @@ export function Update() {
         } else {
             navigate(-1)
         }
-
-
     }, [])
 
     const handleInputChange = (event) => {

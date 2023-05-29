@@ -51,6 +51,8 @@ section {
 	flex-direction: column;
 	align-items: center;
 	margin-top: 2vw;
+	gap: 1vw;
+	padding-bottom: 1vw;
 }
 
 form {
@@ -194,7 +196,6 @@ p {
 	font-size: 2.4vw;
 	border-radius: 3vw;
 	word-wrap: break-word;
-	margin-bottom: 1vw;
 	display: flex;
 	text-align: center;
 	justify-content: center;

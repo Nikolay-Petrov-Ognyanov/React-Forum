@@ -11,6 +11,7 @@ export function Details() {
     const postAuthor = users.length > 0 && post && users.find(
         u => u._id === post.authorId
     )
+
     const [showConfimrationModal, setShowConfirmationModal] = useState(false)
 
     const navigate = useNavigate()
@@ -28,9 +29,7 @@ export function Details() {
         ).catch(error => console.error(error))
     }, [posts])
 
-
-
-    return (<section >
+    return (<section>
         <div className="postWrapper">
             <p className="postTitle"> {post && post.title} </p>
 
@@ -56,6 +55,20 @@ export function Details() {
                 }
             </div>}
         </div>
+
+        {post && post.comments.length > 0 && post.comments.map(
+            comment => <div key={comment.commentId} className="postWrapper">
+                <p className="postTitle">{comment.title}</p>
+
+                {comment.authorId && users.length > 0 && <p className="authorName">
+                    by <Link to={`/profile/${postAuthor._id}`}>
+                        {users.find(u => u._id === comment.authorId).username}
+                    </Link>
+                </p>}
+
+                <p className="postContent"> {comment.content} </p>
+            </div>
+        )}
 
         {showConfimrationModal && <div onClick={() => setShowConfirmationModal(false)} className="confirmationModalWrapper">
             <div className="confirmationModal">

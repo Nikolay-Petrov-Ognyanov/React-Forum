@@ -1,12 +1,14 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useEffect, useId, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { Context } from "../Context"
 import * as service from "../service"
 
 export function Reply() {
-    const { setPosts, post } = useContext(Context)
+    const { post } = useContext(Context)
 
     const navigate = useNavigate()
+
+    const commentId = useId()
 
     const [inputs, setInputs] = useState({
         title: "",
@@ -65,6 +67,7 @@ export function Reply() {
 
             try {
                 const commentData = post && await service.createComment(post._id, {
+                    commentId,
                     authorId,
                     title,
                     content
